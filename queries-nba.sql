@@ -134,3 +134,13 @@ WHERE t2.t_name = r2.r_team AND
      avg1.teams1 = t2.t_name AND 
      r2.r_points > avg1.avg_pts
      GROUP BY t2.t_name;
+
+--select names that appear in both tables
+SELECT DISTINCT p_name
+FROM players, records
+WHERE p_name = r_player;
+
+
+SELECT ps_team
+FROM playoff
+WHERE EXISTS (SELECT t_name FROM teams WHERE teams.t_name = playoff.ps_team);
