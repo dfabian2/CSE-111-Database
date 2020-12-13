@@ -1,9 +1,10 @@
+
 <?php
 
 include_once 'C:\xampp\htdocs\php\includes\header.php';
 
  ?>
-<h1> Search page</h1>
+<h1> Search Results</h1>
 
 <div class ="player-container">
 <?php
@@ -27,10 +28,17 @@ echo"<tr><td>ID</td><td>Name</td><td>Team</td><td>Age</td><td>PPG</td><td>FGM</t
             echo "There are no results matching your search!";
         }
     }
+
+
+
+
 ?>
 </div>
 
+
+
 <div class ="allstar-container">
+
 
 <?php
 
@@ -164,5 +172,3 @@ echo"<tr><td>ID</td><td>Team</td><td>Year</td><td>GP</td><td>Win</td><td>Loss</t
     }
 ?>
 </div>
-
-
