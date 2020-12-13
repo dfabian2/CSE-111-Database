@@ -1,24 +1,39 @@
 <?php
 
-include_once 'C:\xampp\htdocs\php\includes\header.php';
+include_once 'C:\xampp\htdocs\php\includes\dbh.inc.php';
 
  ?>
 
-<form action="search.php" method="POST"> 
-   <input type="text" name="search" placeholder= "Search">
-   <button type ="submit" name="submit-search">Search</button>
-</form>
-
-</body>
-</html>
-
-<?php
-
-echo "NBA Stats" . "<br>";
+<!DOCTYPE html>
+<html>
+<head>
 
 
+</head>
 
- ?>
+
+<body>
+
+<h1 style="font-size:3vw">NBA Statistics</h1>
+
+
+
+ <?php
+
+ include_once 'C:\xampp\htdocs\php\includes\header.php';
+
+  ?>
+
+ <form action="search.php" method="POST">
+    <input type="text" name="search" placeholder= "Search">
+    <button type ="submit" name="submit-search">Search</button>
+ </form>
+
+ </body>
+ </html>
+
+
+
 
  <?php
  echo"<br>";
@@ -47,7 +62,131 @@ echo "NBA Stats" . "<br>";
       <button type="submit" name="submit"> Submit </button>
  </form>
 
-<div class ="player-container">
+ <?php
+ echo"<br>";
+ echo "Add to All Stars" . "<br>";
+  ?>
+
+ <form action = "includes/allstars.inc.php" method="POST">
+      <input type = "text" name = "id" placeholder="ID">
+      <br>
+      <input type = "text" name = "team" placeholder="Team">
+      <br>
+      <input type = "text" name = "year" placeholder="Year">
+      <br>
+      <input type = "text" name = "gp" placeholder="GP">
+      <br>
+      <input type = "text" name = "win" placeholder="Win">
+      <br>
+      <input type = "text" name = "loss" placeholder="Loss">
+      <br>
+      <input type = "text" name = "points" placeholder="Points">
+      <br>
+      <button type="submit" name="submit"> Submit </button>
+ </form>
+
+ <?php
+ echo"<br>";
+ echo "Add to Records" . "<br>";
+  ?>
+
+ <form action = "includes/records.inc.php" method="POST">
+      <input type = "text" name = "id" placeholder="ID">
+      <br>
+      <input type = "text" name = "player" placeholder="Player">
+      <br>
+      <input type = "text" name = "team" placeholder="Team">
+      <br>
+      <input type = "text" name = "points" placeholder="Points">
+      <br>
+      <input type = "text" name = "blocks" placeholder="Blocks">
+      <br>
+      <input type = "text" name = "rebounds" placeholder="Rebounds">
+      <br>
+      <input type = "text" name = "assists" placeholder="Assists">
+      <br>
+
+      <button type="submit" name="submit"> Submit </button>
+ </form>
+
+ <?php
+ echo"<br>";
+ echo "Add to Teams" . "<br>";
+  ?>
+
+ <form action = "includes/teams.inc.php" method="POST">
+      <input type = "text" name = "id" placeholder="ID">
+      <br>
+      <input type = "text" name = "team" placeholder="Team">
+      <br>
+      <input type = "text" name = "win" placeholder="Win">
+      <br>
+      <input type = "text" name = "loss" placeholder="Loss">
+      <br>
+      <input type = "text" name = "gp" placeholder="GP">
+      <br>
+      <input type = "text" name = "points" placeholder="Points">
+      <br>
+      <input type = "text" name = "fga" placeholder="FGA">
+      <br>
+
+      <button type="submit" name="submit"> Submit </button>
+ </form>
+
+
+ <?php
+ echo"<br>";
+ echo "Add to Seasons" . "<br>";
+  ?>
+
+ <form action = "includes/seasons.inc.php" method="POST">
+      <input type = "text" name = "id" placeholder="ID">
+      <br>
+      <input type = "text" name = "name" placeholder="Name">
+      <br>
+      <input type = "text" name = "team" placeholder="Team">
+      <br>
+      <input type = "text" name = "playoffs" placeholder="Playoffs">
+      <br>
+      <input type = "text" name = "year" placeholder="Year">
+      <br>
+      <input type = "text" name = "loss" placeholder="Loss">
+      <br>
+      <input type = "text" name = "win" placeholder="Win">
+      <br>
+      <input type = "text" name = "wp" placeholder="WP">
+      <br>
+      <input type = "text" name = "points" placeholder="Points">
+      <br>
+
+      <button type="submit" name="submit"> Submit </button>
+ </form>
+
+ <?php
+ echo"<br>";
+ echo "Add to Playoffs" . "<br>";
+  ?>
+
+ <form action = "includes/playoffs.inc.php" method="POST">
+      <input type = "text" name = "id" placeholder="ID">
+      <br>
+
+      <input type = "text" name = "team" placeholder="Team">
+      <br>
+      <input type = "text" name = "year" placeholder="Year">
+      <br>
+      <input type = "text" name = "gp" placeholder="GP">
+      <br>
+      <input type = "text" name = "win" placeholder="Win">
+      <br>
+      <input type = "text" name = "loss" placeholder="Loss">
+      <br>
+      <input type = "text" name = "points" placeholder="Points">
+      <br>
+
+      <button type="submit" name="submit"> Submit </button>
+ </form>
+
 <?php
 
 $sql = "SELECT * FROM players;";
@@ -66,9 +205,8 @@ while ($row =  mysqli_fetch_assoc($result)){
 echo"</table>";
 
    ?>
-</div>
 
-<div class ="allstar-container">
+
    <?php
 
    $sql = "SELECT * FROM allstars;";
@@ -87,9 +225,7 @@ echo"</table>";
    echo"</table>";
 
       ?>
-</div>
 
-<div class ="records-container">
 
       <?php
 
@@ -109,10 +245,7 @@ echo"</table>";
       echo"</table>";
 
          ?>
-</div>
 
-<div class ="team-container">
-         
          <?php
 
          $sql = "SELECT * FROM teams;";
@@ -131,9 +264,6 @@ echo"</table>";
          echo"</table>";
 
             ?>
-</div>
-
-<div class ="season-container">
 
 
 <?php
@@ -143,7 +273,7 @@ echo"</table>";
             echo"<br>";
             echo "Seasons" . "<br>";
             echo"<table border='1'>";
-            echo"<tr><td>ID</td><td>Name</td><td>Team</td><td>Playoffs</td><td>Year</td><td>Loss</td><td>Win</td><td>WP</td><td>Points</td><tr>";
+            echo"<tr><td>ID</td><td>Player</td><td>Team</td><td>Playoffs</td><td>Year</td><td>Loss</td><td>Win</td><td>WP</td><td>Points</td><tr>";
 
             while ($row =  mysqli_fetch_assoc($result)){
 
@@ -154,10 +284,11 @@ echo"</table>";
             echo"</table>";
 
                ?>
-</div>
 
-<div class ="playoff-container">
+
    <?php
+
+
 
    $sql = "SELECT * FROM playoffs;";
    $result = mysqli_query($conn, $sql);
@@ -176,10 +307,11 @@ echo"</table>";
 
       ?>
 
-</div>
+
 
 
 
 
  </body>
  </html>
+
